@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.definesPresentationContext = true 
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,6 +22,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func camera(sender: UIBarButtonItem) {
+        let controller = UIImagePickerController()
+        controller.sourceType = .Camera
+        controller.showsCameraControls = true
+        controller.allowsEditing = true
+        controller.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
+        presentViewController(controller, animated: true, completion: nil)
+    }
 
 }
 
